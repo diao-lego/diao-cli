@@ -1,6 +1,6 @@
 {
   "name": "@diao-cli/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "diao-cli core",
   "author": "ChenZhiPeng <634323580@qq.com>",
   "homepage": "",
@@ -23,7 +23,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/utils": "^0.0.1"
+    "@diao-cli/utils": "^0.0.2"
   },
   "gitHead": "3dd798aa39a2152290672f893d65e1b3abe0785a"
 }
