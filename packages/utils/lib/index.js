@@ -3,5 +3,6 @@
 module.exports = utils;
 
 function utils() {
-    // TODO
+  // TODO
+  console.log("utils 屌")
 }

@@ -24,7 +24,9 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/utils": "^0.0.3"
+    "@diao-cli/utils": "file:../utils",
+    "dedent": "^0.7.0",
+    "yargs": "^16.2.0"
   },
   "gitHead": "0fa500fc26aae30b597b1b80bbea984ff3735e65"
 }
