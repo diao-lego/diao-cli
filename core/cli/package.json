@@ -24,8 +24,17 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/utils": "file:../utils",
+    "@diao-cli/log": "file:../../utils/log",
+    "colors": "^1.4.0",
     "dedent": "^0.7.0",
+    "dotenv": "^8.2.0",
+    "import-local": "^3.0.2",
+    "minimist": "^1.2.5",
+    "npmlog": "^4.1.2",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.3.4",
+    "user-home": "^2.0.0",
     "yargs": "^16.2.0"
   },
   "gitHead": "0fa500fc26aae30b597b1b80bbea984ff3735e65"

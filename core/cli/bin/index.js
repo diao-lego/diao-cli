@@ -1,7 +1,19 @@
 #! /usr/bin/env node
-const dedent = require("dedent");
-const yargs  = require('yargs/yargs')
+
+const importLocal = require('import-local')
+
+if(importLocal(__filename)) {
+  require('npmlog').info('cli', '正在使用 imooc-cli 本地版本')
+} else {
+  require('../lib')(process.argv.slice(2))
+}
+
+
+
+
 // const { hideBin } = require('yargs/helpers')
+/* const dedent = require("dedent");
+const yargs  = require('yargs/yargs')
 const pkg = require("../package.json");
 
 const context = {
@@ -59,8 +71,5 @@ cli
       console.log(argv)
     }
   })
-  .parse(argv, context)
+  .parse(argv, context) */
 
-// const utils = require('@diao-cli/utils')
-// console.log('hello diao-cli 屌爆了')
-// utils()

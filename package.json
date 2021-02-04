@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "diao-cli": "packages/core/bin/index.js"
+    "diao-cli": "core/cli/bin/index.js"
   },
   "main": "index.js",
   "scripts": {
