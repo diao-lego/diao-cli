@@ -7,7 +7,9 @@ const semver = require('semver')
 module.exports = {
   getNpmInfo,
   getNpmVersions,
-  getNpmSemverVersion
+  getNpmSemverVersion,
+  getDefaultRegistry,
+  getNpmLaterVersion
 };
 
 /**
@@ -82,6 +84,14 @@ async function getNpmSemverVersion(baseVersion, npmName, registry) {
   const newVersions = getNpmSemverVersions(baseVersion, versions)
   if(newVersions && newVersions.length > 0) {
     return newVersions[0]
+  }
+  return null
+}
+
+async function getNpmLaterVersion(npmName, registry) {
+  const versions = await getNpmVersions(npmName, registry)
+  if(versions) {
+    return versions.sort((a, b) => semver.gt(b, a))[0]
   }
   return null
 }
