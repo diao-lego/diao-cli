@@ -1,5 +1,5 @@
 {
-  "name": "@diao-cli/init",
+  "name": "@diao-cli/request",
   "version": "0.0.4",
   "description": "> TODO: description",
   "author": "ydd <634323580@qq.com>",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npm.taobao.org"
+    "registry": "http://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -23,18 +23,10 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "dependencies": {
-    "@diao-cli/command": "file:../../models/command",
-    "@diao-cli/log": "file:../../utils/log",
-    "@diao-cli/package": "file:../../models/package",
-    "@diao-cli/request": "file:../../utils/request",
-    "@diao-cli/utils": "file:../../utils/utils",
-    "fs-extra": "^9.1.0",
-    "inquirer": "^8.0.0",
-    "semver": "^7.3.5",
-    "user-home": "^3.0.0"
-  },
   "bugs": {
     "url": "https://github.com/634323580/diao-cli/issues"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }

@@ -20,5 +20,8 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "0fa500fc26aae30b597b1b80bbea984ff3735e65"
+  "gitHead": "0fa500fc26aae30b597b1b80bbea984ff3735e65",
+  "dependencies": {
+    "cli-spinner": "^0.2.10"
+  }
 }
