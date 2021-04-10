@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "@diao-cli/package": "file:../../models/package",
-    "@diao-cli/log": "file:../../utils/log"
+    "@diao-cli/log": "file:../../utils/log",
+    "@diao-cli/utils": "file:../../utils/utils"
   },
   "bugs": {
     "url": "https://github.com/634323580/diao-cli/issues"
