@@ -9,6 +9,8 @@ const semver = require('semver')
 const userHome = require('user-home')
 // 操作文件系统方法
 const fse = require('fs-extra')
+const glob = require('glob')
+const ejs = require('ejs')
 const Command = require('@diao-cli/command')
 const Package = require('@diao-cli/package')
 const log = require('@diao-cli/log')
@@ -50,6 +52,9 @@ class InitCommand extends Command {
 
     } catch (e) {
       log.error(e.message)
+      if(process.env.LOG_LEVEL === 'verbose') {
+        console.log(e)
+      }
     }
   }
 
@@ -99,6 +104,40 @@ class InitCommand extends Command {
     return ret
   }
 
+  ejsRender(options) {
+    const dir = process.cwd()
+    return new Promise((resolve, reject) => {
+      glob('**', {
+        cwd: dir,
+        ignore: options.ignore || '',
+        nodir: true
+      }, (err, files) => {
+        if(err) {
+          reject(err)
+        }
+        // console.log(files)
+        Promise.all(files.map(file => {
+          const filePath = path.join(dir, file)
+          const projectInfo = this.projectInfo
+          return new Promise((resolve1, reject1) => {
+            ejs.renderFile(filePath, projectInfo, {}, (err, result) => {
+              if(err) {
+                reject1(err)
+              } else {
+                fse.writeFileSync(filePath, result)
+                resolve1(result)
+              }
+            })
+          })
+        })).then(() => {
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    })
+  }
+
   async installNormalTemplate() {
     // 拷贝模板代码至当前目录
     let spinner = spinnerStart('正在安装模板...')
@@ -108,18 +147,22 @@ class InitCommand extends Command {
       const targetPath = process.cwd()
       fse.ensureDirSync(templatePath)
       fse.ensureDirSync(targetPath)
-      fse.copy(templatePath, targetPath)
+      fse.copySync(templatePath, targetPath)
     } catch (error) {
       throw error
     } finally {
       spinner.stop(true)
       log.success('模板安装成功')
-      // 依赖安装
-      const { installCommand, startCommand } = this.templateInfo
-      await this.execCommand(installCommand, '依赖安装过程失败！')
-      // 启动命令执行
-      await this.execCommand(startCommand, '启动项目失败！')
     }
+    const ignore = ['node_modules/**', 'public/**']
+    await this.ejsRender({
+      ignore
+    })
+    // 依赖安装
+    const { installCommand, startCommand } = this.templateInfo
+    await this.execCommand(installCommand, '依赖安装过程失败！')
+    // 启动命令执行
+    await this.execCommand(startCommand, '启动项目失败！')
 
   }
 
@@ -220,7 +263,20 @@ class InitCommand extends Command {
   }
   // 获取用户输入的项目信息
   async getProjectInfo() {
+    function isValidName(v) {
+      // 1.首字符必须为英文字符
+      // 2.尾字符必须为英文或数字，不能为字符
+      // 3.字符仅允许"-_"
+      // 合法：a, a-b, a_b, a-b-c, a_b_C, a-b1-c1, a_b1_c1, a1_b1_c1
+      // 不合法：1, a_, a-, a_1, a-1
+      return /^[a-zA-Z]+([-][a-zA-Z][a-zA-Z0-9]*|[_][a-zA-Z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v)
+    }
     let projectInfo = {}
+    let isProjectNameValid = false
+    if(isValidName(this.projectName)) {
+      isProjectNameValid = true
+      projectInfo.projectName = this.projectName
+    }
     // 1.选择创建项目或者组件
     const { type } = await inquirer.prompt({
       name: 'type',
@@ -237,7 +293,7 @@ class InitCommand extends Command {
     })
     // 2.获取项目的基本信息
     if(type === TYPE_PROJECT) {
-      const project = await inquirer.prompt([{
+      const projectNamePrompt = {
         type: 'input',
         name: 'projectName',
         message: '请输入项目名称',
@@ -246,12 +302,7 @@ class InitCommand extends Command {
           const done = this.async();
           // Do async stuff
           setTimeout(function() {
-            // 1.首字符必须为英文字符
-            // 2.尾字符必须为英文或数字，不能为字符
-            // 3.字符仅允许"-_"
-            // 合法：a, a-b, a_b, a-b-c, a_b_C, a-b1-c1, a_b1_c1, a1_b1_c1
-            // 不合法：1, a_, a-, a_1, a-1
-            if (!/^[a-zA-Z]+([-][a-zA-Z][a-zA-Z0-9]*|[_][a-zA-Z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v)) {
+            if (!isValidName(v)) {
               done('请输入合法的项目名称');
               return;
             }
@@ -261,7 +312,14 @@ class InitCommand extends Command {
         filter: function(v) {
           return v
         }
-      }, {
+      }
+      const projectPrompt = []
+      if(!isProjectNameValid) {
+        projectPrompt.push(projectNamePrompt)
+      }
+      const project = await inquirer.prompt([
+        ...projectPrompt,
+        {
         type: 'input',
         name: 'projectVersion',
         message: '请输入版本号',
@@ -290,6 +348,7 @@ class InitCommand extends Command {
         choices: this.createTemplateChoices()
       }])
       projectInfo = {
+        ...projectInfo,
         type,
         ...project
       }
@@ -297,6 +356,15 @@ class InitCommand extends Command {
     } else if(type === TYPE_COMPONENT) {
 
     }
+    // 生成className
+    if(projectInfo.projectName) {
+      projectInfo.name = projectInfo.projectName
+      projectInfo.className = require('kebab-case')(projectInfo.projectName).replace(/^-/, '')
+    }
+    if(projectInfo.projectVersion) {
+      projectInfo.version = projectInfo.projectVersion
+    }
+    log.verbose(projectInfo)
     return projectInfo
   }
 

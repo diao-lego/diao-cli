@@ -98,6 +98,8 @@ class Package {
         }]
       })
       this.packageVersion = lasePackageVersion
+    } else {
+      this.packageVersion = lasePackageVersion
     }
   }
 
