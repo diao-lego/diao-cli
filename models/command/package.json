@@ -1,6 +1,6 @@
 {
   "name": "@diao-cli/command",
-  "version": "0.0.4",
+  "version": "1.0.0-alpha.0",
   "description": "diao-cli command",
   "author": "ydd <634323580@qq.com>",
   "homepage": "https://github.com/634323580/diao-cli#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/634323580/diao-cli/issues"
   },
   "dependencies": {
-    "colors": "^1.4.0",
-    "semver": "^7.3.5",
     "@diao-cli/log": "file:../../utils/log",
-    "@diao-cli/utils": "file:../../utils/utils"
+    "@diao-cli/utils": "file:../../utils/utils",
+    "colors": "^1.4.0",
+    "semver": "^7.3.5"
   }
 }

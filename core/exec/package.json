@@ -1,6 +1,6 @@
 {
   "name": "@diao-cli/exec",
-  "version": "0.0.4",
+  "version": "1.0.0-alpha.0",
   "description": "diao-cli execute package",
   "author": "ydd <634323580@qq.com>",
   "homepage": "https://github.com/634323580/diao-cli#readme",
@@ -24,8 +24,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/package": "file:../../models/package",
     "@diao-cli/log": "file:../../utils/log",
+    "@diao-cli/package": "file:../../models/package",
     "@diao-cli/utils": "file:../../utils/utils"
   },
   "bugs": {
