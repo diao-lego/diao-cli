@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@diao-cli/exec": "^1.0.1-alpha.0",
-    "@diao-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@diao-cli/get-npm-info": "^1.0.1-alpha.0",
     "@diao-cli/init": "^1.0.1-alpha.0",
     "@diao-cli/log": "^1.0.1-alpha.0",
     "colors": "^1.4.0",
@@ -40,5 +40,5 @@
     "user-home": "^2.0.0",
     "yargs": "^16.2.0"
   },
-  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
+  "gitHead": "39f7c656e01578753658bbcbf3e5b2a133bae049"
 }

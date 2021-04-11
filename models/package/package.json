@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@diao-cli/format-path": "^1.0.1-alpha.0",
-    "@diao-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@diao-cli/get-npm-info": "^1.0.1-alpha.0",
     "@diao-cli/utils": "^1.0.0-alpha.0",
     "fs-extra": "^9.1.0",
     "npminstall": "^4.11.0",
@@ -36,5 +36,5 @@
   "bugs": {
     "url": "https://github.com/634323580/diao-cli/issues"
   },
-  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
+  "gitHead": "39f7c656e01578753658bbcbf3e5b2a133bae049"
 }
