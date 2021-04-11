@@ -1,6 +1,6 @@
 {
   "name": "@diao-cli/core",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.1",
   "description": "diao-cli core",
   "author": "ChenZhiPeng <634323580@qq.com>",
   "homepage": "",
@@ -24,10 +24,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/exec": "^1.0.1-alpha.0",
-    "@diao-cli/get-npm-info": "^1.0.1-alpha.0",
-    "@diao-cli/init": "^1.0.1-alpha.0",
-    "@diao-cli/log": "^1.0.1-alpha.0",
+    "@diao-cli/exec": "^1.0.1",
+    "@diao-cli/get-npm-info": "^1.0.1",
+    "@diao-cli/init": "^1.0.1",
+    "@diao-cli/log": "^1.0.1",
     "colors": "^1.4.0",
     "commander": "^7.2.0",
     "dedent": "^0.7.0",
