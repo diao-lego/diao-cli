@@ -16,11 +16,11 @@ npm install -g @diao-cli/core
 项目/组件初始化
 
 ```bash
-imooc-cli init 
+diao-cli init 
 ```
 
 强制清空当前文件夹
 
 ```bash
-imooc-cli init --force
+diao-cli init --force
 ```
