@@ -29,5 +29,6 @@
   },
   "dependencies": {
     "npmlog": "^4.1.2"
-  }
+  },
+  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
 }

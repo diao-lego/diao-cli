@@ -24,10 +24,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/exec": "file:../exec",
+    "@diao-cli/exec": "^1.0.1-alpha.0",
     "@diao-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@diao-cli/init": "file:../../commands/init",
-    "@diao-cli/log": "file:../../utils/log",
+    "@diao-cli/init": "^1.0.1-alpha.0",
+    "@diao-cli/log": "^1.0.1-alpha.0",
     "colors": "^1.4.0",
     "commander": "^7.2.0",
     "dedent": "^0.7.0",
@@ -40,5 +40,5 @@
     "user-home": "^2.0.0",
     "yargs": "^16.2.0"
   },
-  "gitHead": "0fa500fc26aae30b597b1b80bbea984ff3735e65"
+  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
 }

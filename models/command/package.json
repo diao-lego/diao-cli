@@ -28,9 +28,10 @@
     "url": "https://github.com/634323580/diao-cli/issues"
   },
   "dependencies": {
-    "@diao-cli/log": "file:../../utils/log",
-    "@diao-cli/utils": "file:../../utils/utils",
+    "@diao-cli/log": "^1.0.1-alpha.0",
+    "@diao-cli/utils": "^1.0.0-alpha.0",
     "colors": "^1.4.0",
     "semver": "^7.3.5"
-  }
+  },
+  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
 }

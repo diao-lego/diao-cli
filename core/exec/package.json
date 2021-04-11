@@ -25,11 +25,12 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@diao-cli/log": "file:../../utils/log",
-    "@diao-cli/package": "file:../../models/package",
-    "@diao-cli/utils": "file:../../utils/utils"
+    "@diao-cli/log": "^1.0.1-alpha.0",
+    "@diao-cli/package": "^1.0.1-alpha.0",
+    "@diao-cli/utils": "^1.0.0-alpha.0"
   },
   "bugs": {
     "url": "https://github.com/634323580/diao-cli/issues"
-  }
+  },
+  "gitHead": "ac22eb9099d0a55ffa7d3dda666610e82fd42209"
 }
