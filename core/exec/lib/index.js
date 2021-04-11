@@ -5,8 +5,8 @@ const log = require('@diao-cli/log')
 const { exec: spawn } =  require('@diao-cli/utils')
 
 const SETTINGS = {
-  // init: '@diao-cli/init',
-  init: '@imooc-cli/init',
+  init: '@diao-cli/init',
+  // init: '@imooc-cli/init',
 }
 
 const CACHE_DIR = 'dependencies'

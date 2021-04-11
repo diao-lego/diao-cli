@@ -43,7 +43,7 @@ function registerCommand() {
     .usage('<command> [options]')
     .version(pkg.version)
     .option('-d, --debug', '是否开启调试模式', false)
-    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '125')
+    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径')
 
   program
     .command('init [projectName]')
